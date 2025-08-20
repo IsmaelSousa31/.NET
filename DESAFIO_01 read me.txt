@@ -1,0 +1,16 @@
+Gerenciador de TAGs de Pedágio
+Este programa em C# simula um sistema de controle de TAGs de pedágio. Ele permite ao usuário interagir com o sistema através de um menu de opções, gerenciando o saldo de TAGs pré-definidas.
+
+Funcionalidades
+Carregar Saldo: Permite adicionar um valor a uma TAG específica, identificada por seu número (de 0 a 4).
+
+Passar pelo Pedágio: Simula a passagem de uma TAG, verificando se há saldo suficiente para o pagamento e, se houver, descontando o valor correspondente.
+
+Visualizar Saldo: Exibe o saldo atual de uma TAG específica.
+
+Controle de Fluxo: O programa opera em um loop contínuo até que o usuário escolha a opção para sair.
+
+Estrutura do Programa
+O sistema utiliza dois arrays para armazenar os dados:
+
+Um array para os saldos de cada TAG, onde o índice do array corresponde ao número da TAG.
