@@ -1,144 +1,98 @@
-﻿class Program
+﻿class Program{
+
+static void Main(string[] nome){
+string[] fila = new string[5];
+int inicio = 0;
+int fim = -1;
+void Enfilerar(string nome)
 {
-
-    static void Main()
+    if (fim < fila.Length - 1)
     {
-        int[] numeros = new int[5];
-        float[] valor = new float[5];
-        int inicio = 0;
-        
+        fim++;
+        fila[fim] = nome;
+        Console.WriteLine($"{nome} foi adicionado à fila.");
+    }
+    else
+    {
+        Console.WriteLine("A fila está cheia.");
+    }
+}
 
-        void CarregarSaldo(int ntag, float valortag)
-        {      
-            
-            valor[ntag] = valor[ntag] + valortag;
-            Console.WriteLine($"O valor R$ {valortag:F2} foi adicionado a Tag {ntag}, saldo atual R$ {valor[ntag]:F2}");
-                    
-        }
+void Desenfileirar()
+{
+    if (inicio <= fim)
+    {
+        Console.WriteLine($"{fila[inicio]} foi removido da fila.");
+        inicio++;
+    }
+    else
+    {
+        Console.WriteLine("A fila está vazia.");
+    }
+}
 
-        void PassarPedagio(int numero_tag, float valorpedagio)
+void Fila()
         {
-            if (valor[numero_tag] >= valorpedagio)
+            if (inicio <= fim)
             {
-                valor[numero_tag] = valor[numero_tag] - valorpedagio;
-                Console.WriteLine($"Sucesso, a TAG {numero_tag} passou pelo pedágio. Saldo restante = R$ {valor[numero_tag]:F2}");
+                Console.Write("Clientes na fila:");
+                for (int i = inicio; i <= fim; i++)
+                {
+                    Console.Write($" {fila[i]} |");
+                }
+                Console.WriteLine("  ");
+                Console.WriteLine("================================================");
             }
             else
             {
-                Console.WriteLine($"A TAG {numero_tag} não possui saldo suficiente."); 
+                Console.WriteLine("A fila está vazia.");
             }
-
         }
 
-        void SaldoAtual(int VSaldo)
-        {
 
-            Console.WriteLine($"Saldo da Tag {VSaldo} = R$ {valor[VSaldo]:F2} ");
+        int resposta = 0;
 
-
-        }
-
-        int r = 0;
 
         do
         {
-            Console.WriteLine("=== TAGS Pedágio ===");
-            Console.WriteLine("1 - Carregar Saldo");
-            Console.WriteLine("2 - Passar pelo Pedagio");
-            Console.WriteLine("3 - Visualizar saldo");
+        
+            Console.WriteLine("===Menu Sorveteria===");
+            Console.WriteLine("Escolha um opção: ");
+            Console.WriteLine("1 - adicionar cliente");
+            Console.WriteLine("2  - atender clientes");
+            Console.WriteLine("3 - Exibir o estado atual da fila");
             Console.WriteLine("4 - Sair");
+            resposta = int.Parse(Console.ReadLine());
 
-            r = int.Parse(Console.ReadLine());
-
-            if (r == 1)
+            if (resposta == 1)
             {
-                Console.WriteLine("Digite o número de 0 a 4 referente a tag que deseja carregar: ");
-                int n_tag = int.Parse(Console.ReadLine());
+                Console.WriteLine("Digite o nome do cliente:");
+                string nome_ = Console.ReadLine();
 
-                for (int x = inicio; x < numeros.Length; x++)
-                {
-                   
-                    if (n_tag >= 0 && n_tag <= 4)
-                    {
-                        Console.WriteLine("Digite o valor que deseja carregar: ");
-                        float valor_tag = float.Parse(Console.ReadLine());
-
-                        CarregarSaldo(n_tag, valor_tag);
-                        break;
-                    }
-                    else if (x != numeros.Length)
-                    {
-                        Console.WriteLine("Tag digitada não foi encontrada! tente novamente.");
-                        Console.WriteLine("============================================");
-                        break;
-                    }
-                
-                }
-                
+                Enfilerar(nome_);
+            }
+            else if (resposta == 2)
+            {
+                Desenfileirar();
+            }
+            else if (resposta == 3)
+            {
+                Fila();
 
             }
-                else if (r == 2)
-                {
-                    Console.WriteLine("Digite o número de 0 a 4 referente a tag que deseja utilizar: ");
-                    int nu_tag = int.Parse(Console.ReadLine());
+            else if (resposta == 4)
+            {
+                Console.WriteLine("Saindo...");
+                
+            }
+            else
+            {
+                Console.WriteLine("Opção inválida.");
+            }
+            
 
-                    for (int y = inicio; y < numeros.Length; y++)
-                    {
-                    if (nu_tag >= 0 && nu_tag <= 4)
-                    {
-                        Console.WriteLine("Digite o valor do pedagio: ");
-                        float valor_pedagio = float.Parse(Console.ReadLine());
-
-                        PassarPedagio(nu_tag, valor_pedagio);
-                        break;
-                        }
-                    else if (y != numeros.Length)
-                    {
-                        Console.WriteLine("Tag digitada não foi encontrada! tente novamente.");
-                        Console.WriteLine("=================================================");
-                        break;
-                    }
-                            
-                    }
-
-                   
-
-                }
-                else if (r == 3)
-                {
-                    Console.WriteLine("Digite o número de 0 a 4 referente a tag que deseja saber o saldo: ");
-                    int saldo_tag = int.Parse(Console.ReadLine());
-
-                    for (int z = inicio; z < numeros.Length; z++)
-                    {
-                    if (saldo_tag >= 0 && saldo_tag <= 4)
-                    {
-
-                        SaldoAtual(saldo_tag);
-                        break;
-                        
-                        }
-                    else if (z != numeros.Length)
-                    {
-                        Console.WriteLine("Tag digitada não foi encontrada! tente novamente.");
-                        Console.WriteLine("=================================================");
-                        break;
-                    }
-                            
-                    }
-                }
-                else if (r == 4)
-                {
-                    Console.WriteLine("Saindo...");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Opção inválida, tente novamente");
-
-                }
-
-        } while (r != 4);
-
-    }
+        } while (resposta != 4);
 }
+}
+
+

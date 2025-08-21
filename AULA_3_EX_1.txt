@@ -1,0 +1,14 @@
+Sistema de Fila para Sorveteria
+Este programa em C# simula um sistema de gestão de fila para uma sorveteria, utilizando a estrutura de dados de fila (FIFO - First-In, First-Out).
+
+Funcionalidades
+Adicionar Cliente (Enfileirar): Permite adicionar novos clientes à fila, respeitando o limite de capacidade.
+
+Atender Cliente (Desenfileirar): Remove o cliente que está na primeira posição da fila (o mais antigo).
+
+Exibir Fila: Mostra todos os clientes que estão atualmente na fila, da primeira à última posição.
+
+Sair: Encerra o programa.
+
+Como Funciona
+O programa utiliza um array para representar a fila e duas variáveis (inicio e fim) para controlar as posições do primeiro e do último cliente, simulando o comportamento de uma fila. A interação com o usuário é feita via console, através de um menu de opções.
